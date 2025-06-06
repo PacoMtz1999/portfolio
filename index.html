@@ -1,655 +1,405 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  
-  <meta name="copyright" content="MACode ID, https://www.macodeid.com/">
-  
-  <title>Francisco Martinez</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="icon" href="./assets/favicon.png" type="image/x-icon">
+    <!-- Para mejor compatibilidad con navegadores modernos -->
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
+    <title>Francisco Martínez | Full Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        dark: '#1F2937',
+                        light: '#F9FAFB',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-  <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
-  
-  <link rel="stylesheet" type="text/css" href="./assets/css/themify-icons.css">
-  
-  <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.css">
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
 
-  <link rel="stylesheet" type="text/css" href="./assets/vendor/animate/animate.css">
-  
-  <link rel="stylesheet" type="text/css" href="./assets/vendor/owl-carousel/owl.carousel.css">
-  
-  <link rel="stylesheet" type="text/css" href="./assets/vendor/perfect-scrollbar/css/perfect-scrollbar.css">
-  
-  <link rel="stylesheet" type="text/css" href="./assets/vendor/nice-select/css/nice-select.css">
-  
-  <link rel="stylesheet" type="text/css" href="./assets/vendor/fancybox/css/jquery.fancybox.min.css">
-  
-  <link rel="stylesheet" type="text/css" href="./assets/css/virtual.css">
-  
-  <link rel="stylesheet" type="text/css" href="./assets/css/topbar.virtual.css">
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3B82F6;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
 </head>
-<body class="theme-red">
-  
-  <!-- Back to top button -->
-  <div class="btn-back_to_top">
-    <span class="ti-arrow-up"></span>
-  </div>
-  
-  <!-- Setting button -->
-  <div class="config">
-    <div class="template-config">
-      <!-- Settings -->
-      <div class="d-block">
-        <button class="btn btn-fab btn-sm" id="sideel" title="Settings"><span class="ti-settings"></span></button>
-      </div>
-      <!-- Puschase -->
-      <div class="d-block">
-        <a href="https://macodeid.com/projects/virtual-folio/" class="btn btn-fab btn-sm" title="Get this template" data-toggle="tooltip" data-placement="left"><span class="ti-download"></span></a>
-      </div>
-      <!-- Help -->
-      <div class="d-block">
-        <a href="#" class="btn btn-fab btn-sm" title="Help" data-toggle="tooltip" data-placement="left"><span class="ti-help"></span></a>
-      </div>
-    </div>
-    <div class="set-menu">
-      <p>Select Color</p>
-      <div class="color-bar" data-toggle="selected">
-        <span class="color-item bg-theme-red selected" data-class="theme-red"></span>
-        <span class="color-item bg-theme-blue" data-class="theme-blue"></span>
-        <span class="color-item bg-theme-green" data-class="theme-green"></span>
-        <span class="color-item bg-theme-orange" data-class="theme-orange"></span>
-        <span class="color-item bg-theme-purple" data-class="theme-purple"></span>
-      </div>
-      <select class="custom-select d-block my-2" id="change-page">
-        <option value="">Choose Page</option>
-        <option value="index">Topbar</option>
-        <option value="blog-topbar">Blog (Topbar)</option>
-        <option value="index-2">Minibar</option>
-        <option value="blog-minibar">Blog (Minibar)</option>
-      </select>
-    </div>
-  </div>
-  
-  <div class="vg-page page-home" id="home" style="background-image: url(./assets/img/bg_image_1.jpg)">
-    <!-- Navbar -->
-    <div class="navbar navbar-expand-lg navbar-dark sticky" data-offset="500">
-      <div class="container">
-        <a href="" class="navbar-brand">FJ-Folio</a>
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#main-navbar" aria-expanded="true">
-          <span class="ti-menu"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="main-navbar">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a href="#home" class="nav-link" data-animate="scrolling">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a href="#about" class="nav-link" data-animate="scrolling">Acerca de mí</a>
-            </li>
-            <li class="nav-item">
-              <a href="#portfolio" class="nav-link" data-animate="scrolling">Portafolio</a>
-            </li>
-            <li class="nav-item">
-              <a href="#contact" class="nav-link" data-animate="scrolling">Contacto</a>
-            </li>
-          </ul>
-          <ul class="nav ml-auto">
-            <li class="nav-item">
-              <button class="btn btn-fab btn-theme no-shadow">En</button>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div> <!-- End Navbar -->
-    <!-- Caption header -->
-    <div class="caption-header text-center wow zoomInDown">
-      <h5 class="fw-normal">Bienvenido</h5>
-      <h1 class="fw-light mb-4">Soy <b class="fg-theme">Francisco Javier</b> Martinez Oliveros</h1>
-      <div class="badge">Full Stack Developer</div>
-    </div> <!-- End Caption header -->
-    <div class="floating-button"><span class="ti-mouse"></span></div>
-  </div>
-  
-  <div class="vg-page page-about" id="about">
-    <div class="container py-5">
-      <div class="row">
-        <div class="col-lg-4 py-3">
-          <div class="img-place wow fadeInUp">
-            <img src="./assets/img/testimonials/my-picture.jpeg" alt="">
-          </div>
-        </div>
-        <div class="col-lg-6 offset-lg-1 wow fadeInRight">
-          <h1 class="fw-light">Francisco Javier Martinez Oliveros</h1>
-          <h5 class="fg-theme mb-3">Full Stack Developer</h5>
-          <p class="text-muted">Ingeniero en Desarrollo y Gestión de Software con más de 2 años de experiencia en la creación de soluciones tecnológicas eficientes. He liderado proyectos de mejora continua mediante la implementación de plataformas de desarrollo reutilizables y prácticas de integración y entrega continua (CI/CD), logrando impactos significativos en la productividad. Con experiencia en desarrollo Full Stack e infraestructura tecnológica, contribuyo a la optimización de procesos y entrega de productos de alta calidad. Actualmente, curso una Maestría en Ingeniería Aplicada a la Innovación Tecnológica, fortaleciendo mis capacidades para liderar proyectos de transformación digital.</p>
-          <ul class="theme-list">
-            <li><b>De:</b> Morelia, Michoacán</li>
-            <li><b>Vivo en:</b> Morelia, Michoacán</li>
-            <li><b>Edad:</b> 27</li>
-          </ul>
-          <button class="btn btn-theme-outline">Download CV</button>
-        </div>
-      </div>
-    </div>
-    <div class="container py-5">
-      <h1 class="text-center fw-normal wow fadeIn">My Skills</h1>
-      <div class="row py-3">
-        <div class="col-md-6">
-          <div class="px-lg-3">
-            <h4 class="wow fadeInUp">Coding skills</h4>
-            <div class="progress-wrapper wow fadeInUp">
-              <span class="caption">JavaScript</span>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 86%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">86%</div>
-              </div>
-            </div>
-            <div class="progress-wrapper wow fadeInUp">
-              <span class="caption">PHP</span>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">80%</div>
-              </div>
-            </div>
-            <div class="progress-wrapper wow fadeInUp">
-              <span class="caption">HTML + CSS</span>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">100%</div>
-              </div>
-            </div>
-            <div class="progress-wrapper wow fadeInUp">
-              <span class="caption">Phyton</span>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">90%</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="px-lg-3">
-            <h4 class="wow fadeInUp">Design Skills</h4>
-            <div class="progress-wrapper wow fadeInUp">
-              <span class="caption">UI / UX Design</span>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 92%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">92%</div>
-              </div>
-            </div>
-            <div class="progress-wrapper wow fadeInUp">
-              <span class="caption">Web Design</span>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 99%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">99%</div>
-              </div>
-            </div>
-            <div class="progress-wrapper wow fadeInUp">
-              <span class="caption">Logo Design</span>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 79%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">79%</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container pt-5">
-      <div class="row">
-        <div class="col-md-6 wow fadeInRight">
-          <h2 class="fw-normal">Educación</h2>
-          <ul class="timeline mt-4 pr-md-5">
-            <li>
-              <div class="title">2023 - actual</div>
-              <div class="details">
-                <h5>Maestría en Ingeniería Aplicada a la Innovación Tecnológica</h5>
-                <small class="fg-theme">Universidad Tecnológica de Morelia (UTM)</small>
-                <!-- <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered</p> -->
-              </div>
-            </li>
-            <li>
-              <div class="title">2022</div>
-              <div class="details">
-                <h5>Ingeniería en Desarrollo y Gestión de Software</h5>
-                <small class="fg-theme">Universidad Tecnológica de Morelia (UTM)</small>
-              <!-- <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered</p> -->
-              </div>
-            </li>
-            <li>
-              <div class="title">2018</div>
-              <div class="details">
-                <h5>Técnico superior universitario en Desarrollo de Software Multiplataforma</h5>
-                <small class="fg-theme">Universidad Tecnológica de Morelia (UTM)</small>
-                <!-- <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered</p> -->
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-6 wow fadeInRight" data-wow-delay="200ms">
-          <h2 class="fw-normal">Experiencia</h2>
-          <ul class="timeline mt-4 pr-md-5">
-            <li>
-              <div class="title">2024 - actual</div>
-              <div class="details">
-                <h5>Full Stack Developer</h5>
-                <small class="fg-theme">Grupo Ortiz</small>
-                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered</p>
-              </div>
-            </li>
-            <li>
-              <div class="title">2014</div>
-              <div class="details">
-                <h5>Specialize of course</h5>
-                <small class="fg-theme">University of Study</small>
-                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered</p>
-              </div>
-            </li>
-            <li>
-              <div class="title">2011</div>
-              <div class="details">
-                <h5>Specialize of course</h5>
-                <small class="fg-theme">University of Study</small>
-                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="vg-page page-service">
-    <div class="container">
-      <div class="text-center wow fadeInUp">
-        <div class="badge badge-subhead">Service</div>
-      </div>
-      <h1 class="fw-normal text-center wow fadeInUp">What can i do?</h1>
-      <div class="row mt-5">
-        <div class="col-md-6 col-lg-4 col-xl-3">
-          <div class="card card-service wow fadeInUp">
-            <div class="icon">
-              <span class="ti-paint-bucket"></span>
-            </div>
-            <div class="caption">
-              <h4 class="fg-theme">Web Design</h4>
-              <p>There are many variations of passages of Lorem Ipsum available</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 col-xl-3">
-          <div class="card card-service wow fadeInUp">
-            <div class="icon">
-              <span class="ti-search"></span>
-            </div>
-            <div class="caption">
-              <h4 class="fg-theme">SEO</h4>
-              <p>There are many variations of passages of Lorem Ipsum available</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 col-xl-3">
-          <div class="card card-service wow fadeInUp">
-            <div class="icon">
-              <span class="ti-vector"></span>
-            </div>
-            <div class="caption">
-              <h4 class="fg-theme">UI/UX Design</h4>
-              <p>There are many variations of passages of Lorem Ipsum available</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 col-xl-3">
-          <div class="card card-service wow fadeInUp">
-            <div class="icon">
-              <span class="ti-desktop"></span>
-            </div>
-            <div class="caption">
-              <h4 class="fg-theme">Web Development</h4>
-              <p>There are many variations of passages of Lorem Ipsum available</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="vg-page page-funfact" style="background-image: url(./assets/img/bg_banner.jpg);">
-    <div class="container">
-      <div class="row section-counter">
-        <div class="col-md-6 col-lg-3 py-4 wow fadeIn">
-          <h1 class="number" data-number="768">768</h1>
-          <span>Clients</span>
-        </div>
-        <div class="col-md-6 col-lg-3 py-4 wow fadeIn">
-          <h1 class="number" data-number="230">230</h1>
-          <span>Project Compleate</span>
-        </div>
-        <div class="col-md-6 col-lg-3 py-4 wow fadeIn">
-          <h1 class="number" data-number="97">97</h1>
-          <span>Project Ongoing</span>
-        </div>
-        <div class="col-md-6 col-lg-3 py-4 wow fadeIn">
-          <h1 class="number" data-number="699">699</h1>
-          <span>Client Satisfaction</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Portfolio page -->
-  <div class="vg-page page-portfolio" id="portfolio">
-    <div class="container">
-      <div class="text-center wow fadeInUp">
-        <div class="badge badge-subhead">Portfolio</div>
-      </div>
-      <h1 class="text-center fw-normal wow fadeInUp">See my work</h1>
-      <div class="filterable-button py-3 wow fadeInUp" data-toggle="selected">
-        <button class="btn btn-theme-outline selected" data-filter="*">All</button>
-        <button class="btn btn-theme-outline" data-filter=".apps">Apps</button>
-        <button class="btn btn-theme-outline" data-filter=".template">Template</button>
-        <button class="btn btn-theme-outline" data-filter=".ios">IOS</button>
-        <button class="btn btn-theme-outline" data-filter=".ui-ux">UI/UX</button>
-        <button class="btn btn-theme-outline" data-filter=".graphic">Graphic</button>
-        <button class="btn btn-theme-outline" data-filter=".wireframes">Wireframes</button>
-      </div>
 
-      <div class="gridder my-3">
-        <div class="grid-item apps wow zoomIn">
-          <div class="img-place" data-src="./assets/img/work/work-1.jpg" data-fancybox data-caption="<h5 class='fg-theme'>Mobile Travel App</h5> <p>Travel, Discovery</p>">
-            <img src="./assets/img/work/work-1.jpg" alt="">
-            <div class="img-caption">
-              <h5 class="fg-theme">Mobile Travel App</h5>
-              <p>Travel, Discovery</p>
+<body class="bg-light text-dark">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full bg-white shadow-sm z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-primary">FJMO</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link">Inicio</a>
+                <a href="#skills" class="nav-link">Habilidades</a>
+                <a href="#experience" class="nav-link">Experiencia</a>
+                <a href="#contact" class="nav-link">Contacto</a>
             </div>
-          </div>
-        </div>
-        <div class="grid-item template wireframes wow zoomIn">
-          <div class="img-place" data-src="./assets/img/work/work-2.jpg" data-fancybox data-caption="<h5 class='fg-theme'>Music App</h5> <p>Musics</p>">
-            <img src="./assets/img/work/work-2.jpg" alt="">
-            <div class="img-caption">
-              <h5 class="fg-theme">Music App</h5>
-              <p>Musics</p>
-            </div>
-          </div>
-        </div>
-        <div class="grid-item apps ios wow zoomIn">
-          <div class="img-place" data-src="./assets/img/work/work-3.jpg" data-fancybox data-caption="<h5 class='fg-theme'>Gaming Dashboard</h5> <p>Games, Streaming</p>">
-            <img src="./assets/img/work/work-3.jpg" alt="">
-            <div class="img-caption">
-              <h5 class="fg-theme">Gaming Dashboard</h5>
-              <p>Games, Streaming</p>
-            </div>
-          </div>
-        </div>
-        <div class="grid-item graphic ui-ux wow zoomIn">
-          <div class="img-place" data-src="./assets/img/work/work-4.jpg" data-fancybox data-caption="<h5 class='fg-theme'>Drugs Delivery App</h5> <p>Health, Drugs</p>">
-            <img src="./assets/img/work/work-4.jpg" alt="">
-            <div class="img-caption">
-              <h5 class="fg-theme">Drugs Delivery App</h5>
-              <p>Health, Drugs</p>
-            </div>
-          </div>
-        </div>
-        <div class="grid-item apps ios wow zoomIn">
-          <div class="img-place" data-src="./assets/img/work/work-5.jpg" data-fancybox data-caption="<h5 class='fg-theme'>Musics Discover</h5> <p>Musics, Dashboard</p>">
-            <img src="./assets/img/work/work-5.jpg" alt="">
-            <div class="img-caption">
-              <h5 class="fg-theme">Musics Discover</h5>
-              <p>Musics, Dashboard</p>
-            </div>
-          </div>
-        </div>
-        <div class="grid-item graphic ui-ux wireframes wow zoomIn">
-          <div class="img-place" data-src="./assets/img/work/work-6.jpg" data-fancybox data-caption="<h5 class='fg-theme'>Game Streaming</h5> <p>Games, Streaming</p>">
-            <img src="./assets/img/work/work-6.jpg" alt="">
-            <div class="img-caption">
-              <h5 class="fg-theme">Game Streaming</h5>
-              <p>Games, Streaming</p>
-            </div>
-          </div>
-        </div>
-      </div> <!-- End gridder -->
-      <div class="text-center wow fadeInUp">
-        <a href="javascript:void(0)" class="btn btn-theme">Load More</a>
-      </div>
-    </div>
-  </div> <!-- End Portfolio page -->
-  
-  <!-- Testimonial -->
-  <!-- <div class="vg-page page-testimonial">
-    <div class="container">
-      <h1 class="text-center fw-normal wow fadeInUp">What Clients are Saying</h1>
-      <div class="row justify-content-center mt-5 wow fadeInUp">
-        <div class="col-md-9">
-          <div class="owl-carousel testi-carousel">
-            <div class="item">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="img-place">
-                    <img src="./assets/img/testimonials/testimonials_1.jpg" alt="">
-                  </div>
+            <a href="#contact"
+                class="bg-primary text-white px-4 py-2 rounded-md hover:bg-blue-600 transition">Contactar</a>
+            <button class="md:hidden text-dark">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Francisco Javier Martínez Oliveros</h1>
+                <h2 class="text-2xl md:text-3xl text-primary mb-6">Full Stack Developer</h2>
+                <p class="text-lg mb-8 text-gray-600">Ingeniero en Desarrollo y Gestión de Software con experiencia en
+                    el diseño e implementación de soluciones web completas y escalables.</p>
+                <div class="flex space-x-4">
+                    <a href="#contact"
+                        class="bg-primary text-white px-6 py-3 rounded-md hover:bg-blue-600 transition">Contacto</a>
+                    <a href="#skills"
+                        class="border border-primary text-primary px-6 py-3 rounded-md hover:bg-blue-50 transition">Mis
+                        habilidades</a>
                 </div>
-                <div class="col-md-6">
-                  <div class="caption">
-                    <div class="testi-content">There are many variations of passages of Lorem Ipsum available, but the majority have suffered</div>
-                    <div class="testi-info">
-                      <div class="thumb-profile">
-                        <img src="./assets/img/testimonials/testimonials_1.jpg" alt="">
-                      </div>
-                      <div class="tagline">
-                        <h5 class="mb-0">Satria Nugraha</h5>
-                        <span class="text-muted">CEO Nutshell</span>
-                      </div>
+                <div class="mt-8">
+                    <a href="./assets/docs/CV_FranciscoJavierMartinezOliveros.pdf" download
+                        class="inline-flex items-center text-primary hover:text-blue-600 transition">
+                        <i class="fas fa-download mr-2"></i> Descargar CV
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div
+                    class="bg-gradient-to-br from-primary to-blue-400 rounded-full p-2 w-64 h-64 md:w-80 md:h-80 flex items-center justify-center">
+                    <div class="bg-white rounded-full w-60 h-60 md:w-76 md:h-76 overflow-hidden border-4 border-white">
+                        <!-- Tu foto de perfil -->
+                        <img src="./assets/img/testimonials/my-picture.jpeg" alt="Francisco Javier Martínez Oliveros"
+                            class="w-full h-full object-cover">
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-            <div class="item">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="img-place">
-                    <img src="./assets/img/testimonials/testimonials_2.jpg" alt="">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="caption">
-                    <div class="testi-content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe natus expedita ab facilis ut, animi explicabo amet. Voluptatibus possimus iste enim, doloremque, fugiat accusamus nisi optio fugit ratione expedita harum?</div>
-                    <div class="testi-info">
-                      <div class="thumb-profile">
-                        <img src="./assets/img/testimonials/testimonials_2.jpg" alt="">
-                      </div>
-                      <div class="tagline">
-                        <h5 class="mb-0">Selena Arrini</h5>
-                        <span class="text-muted">CEO BigTree</span>
-                      </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-4">Habilidades Técnicas</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Tecnologías y frameworks que domino y utilizo
+                para crear aplicaciones web de alta calidad.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Frontend Skills -->
+                <div class="skill-card bg-light rounded-lg p-6 shadow-md transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4">
+                            <i class="fas fa-laptop-code text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Frontend</h3>
                     </div>
-                  </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">HTML5</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">CSS3</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Sass</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Tailwind</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">TypeScript</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">jQuery</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Vue.js</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Angular</span>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>  -->
-  <!-- End testimonial -->
-  
-  <!-- Client -->
-  <!-- <div class="vg-page page-client">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-lg-4 col-xl-3 item">
-          <div class="img-place wow fadeInUp">
-            <img src="./assets/img/logo/company_1.svg" alt="">
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 col-xl-3 item">
-          <div class="img-place wow fadeInUp">
-            <img src="./assets/img/logo/company_2.svg" alt="">
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 col-xl-3 item">
-          <div class="img-place wow fadeInUp">
-            <img src="./assets/img/logo/company_3.svg" alt="">
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 col-xl-3 item">
-          <div class="img-place wow fadeInUp">
-            <img src="./assets/img/logo/company_4.svg" alt="">
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 col-lg-4 col-xl-3 item">
-          <div class="img-place wow fadeInUp">
-            <img src="./assets/img/logo/company_5.svg" alt="">
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 col-xl-3 item">
-          <div class="img-place wow fadeInUp">
-            <img src="./assets/img/logo/company_6.svg" alt="">
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 col-xl-3 item">
-          <div class="img-place wow fadeInUp">
-            <img src="./assets/img/logo/company_7.svg" alt="">
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 col-xl-3 item">
-          <div class="img-place wow fadeInUp">
-            <img src="./assets/img/logo/company_8.svg" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>  -->
-  <!-- End client -->
-  
-  <!-- Blog -->
-  <!-- <div class="vg-page page-blog" id="blog">
-    <div class="container">
-      <div class="text-center">
-        <div class="badge badge-subhead wow fadeInUp">Blog</div>
-      </div>
-      <h1 class="text-center fw-normal wow fadeInUp">Latest Post</h1>
-      <div class="row post-grid">
-        <div class="col-md-6 col-lg-4 wow fadeInUp">
-          <div class="card">
-            <div class="img-place">
-              <img src="./assets/img/work/work-9.jpg" alt="">
-            </div>
-            <div class="caption">
-              <a href="javascript:void(0)" class="post-category">Technology</a>
-              <a href="#" class="post-title">Invision design forward fund</a>
-              <span class="post-date"><span class="sr-only">Published on</span> May 22, 2018</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 wow fadeInUp">
-          <div class="card">
-            <div class="img-place">
-              <img src="./assets/img/work/work-6.jpg" alt="">
-            </div>
-            <div class="caption">
-              <a href="javascript:void(0)" class="post-category">Business</a>
-              <a href="#" class="post-title">Announcing a plan for small teams</a>
-              <span class="post-date"><span class="sr-only">Published on</span> May 22, 2018</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 wow fadeInUp">
-          <div class="card">
-            <div class="img-place">
-              <img src="./assets/img/work/work-1.jpg" alt="">
-            </div>
-            <div class="caption">
-              <a href="javascript:void(0)" class="post-category">Design</a>
-              <a href="#" class="post-title">5 basic tips for illustrating</a>
-              <span class="post-date"><span class="sr-only">Published on</span> May 22, 2018</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 text-center py-3 wow fadeInUp">
-          <a href="blog-fullbar.html" class="btn btn-theme">See All Post</a>
-        </div>
-      </div>
-    </div>
-  </div> End blog -->
-  
-  <!-- Contact -->
-  <!-- <div class="vg-page page-contact" id="contact">
-    <div class="container-fluid">
-      <div class="text-center wow fadeInUp">
-        <div class="badge badge-subhead">Contact</div>
-      </div>
-      <h1 class="text-center fw-normal wow fadeInUp">Get in touch</h1>
-      <div class="row py-5">
-        <div class="col-lg-7 px-0 pr-lg-3 wow zoomIn">
-          <div class="vg-maps">
-            <div id="google-maps" style="width: 100%; height: 100%;"></div>
-          </div>
-        </div>
-        <div class="col-lg-5">
-          <form class="vg-contact-form">
-            <div class="form-row">
-              <div class="col-12 mt-3 wow fadeInUp">
-                <input class="form-control" type="text" name="Name" placeholder="Your Name">
-              </div>
-              <div class="col-6 mt-3 wow fadeInUp">
-                <input class="form-control" type="text" name="Email" placeholder="Email Address">
-              </div>
-              <div class="col-6 mt-3 wow fadeInUp">
-                <input class="form-control" type="text" name="Subject" placeholder="Subject">
-              </div>
-              <div class="col-12 mt-3 wow fadeInUp">
-                <textarea class="form-control" name="Message" rows="6" placeholder="Enter message here.."></textarea>
-              </div>
-              <button type="submit" class="btn btn-theme mt-3 wow fadeInUp ml-1">Send Message</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div> End Contact -->
-  
-  <!-- Footer -->
-  <div class="vg-footer">
-    <h1 class="text-center">Virtual Folio</h1>
-    <div class="container">
-      <div class="row justify-content-center mt-3">
-        <div class="col-12 mb-3">
-          <h3 class="fw-normal text-center">Subscribe</h3>
-        </div>
-        <div class="col-12">
-          <p class="text-center mb-0 mt-4">Copyright &copy;2020. All right reserved | This template is made with <span class="ti-heart fg-theme-red"></span> by <a href="https://www.macodeid.com/">MACode ID</a></p>
-        </div>
-      </div>
-    </div>
-  </div> <!-- End footer -->
-  
-  
-  <script src="./assets/js/jquery-3.5.1.min.js"></script>
-    
-  <script src="./assets/js/bootstrap.bundle.min.js"></script>
-    
-  <script src="./assets/vendor/owl-carousel/owl.carousel.min.js"></script>
-    
-  <script src="./assets/vendor/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-    
-  <script src="./assets/vendor/isotope/isotope.pkgd.min.js"></script>
-    
-  <script src="./assets/vendor/nice-select/js/jquery.nice-select.min.js"></script>
-    
-  <script src="./assets/vendor/fancybox/js/jquery.fancybox.min.js"></script>
 
-  <script src="./assets/vendor/wow/wow.min.js"></script>
+                <!-- Backend Skills -->
+                <div class="skill-card bg-light rounded-lg p-6 shadow-md transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-server text-green-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Backend</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">PHP</span>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Laravel</span>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">CodeIgniter</span>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Python</span>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Django</span>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Node.js</span>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Express</span>
+                    </div>
+                </div>
 
-  <script src="./assets/vendor/animateNumber/jquery.animateNumber.min.js"></script>
+                <!-- Database Skills -->
+                <div class="skill-card bg-light rounded-lg p-6 shadow-md transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-purple-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-database text-purple-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Bases de Datos</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">MySQL</span>
+                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">PostgreSQL</span>
+                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">SQLite</span>
+                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">MongoDB</span>
+                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">DBeaver</span>
+                    </div>
+                </div>
 
-  <script src="./assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+                <!-- DevOps Skills -->
+                <div class="skill-card bg-light rounded-lg p-6 shadow-md transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-code-branch text-yellow-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">DevOps & Tools</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Docker</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Git</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">PowerBI</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Testing QA</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">DevOps</span>
+                    </div>
+                </div>
 
-  <script src="./assets/js/google-maps.js"></script>
-    
-  <script src="./assets/js/topbar-virtual.js"></script>
+                <!-- Other Skills -->
+                <div class="skill-card bg-light rounded-lg p-6 shadow-md transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-red-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-tools text-red-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Otras Tecnologías</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">WordPress</span>
+                        <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">No Code</span>
+                        <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Low Code</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIA_zqjFMsJM_sxP9-6Pde5vVCTyJmUHM&callback=initMap"></script>
-  
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-6 bg-gray-50">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-4">Experiencia Profesional</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Mi trayectoria profesional como desarrollador
+                Full Stack.</p>
+
+            <div class="space-y-8 max-w-3xl mx-auto">
+                <!-- Grupo Ortiz -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                        <h3 class="text-xl font-semibold">Grupo Ortiz</h3>
+                        <span class="text-primary font-medium">Noviembre 2023 - Actualidad</span>
+                    </div>
+                    <p class="text-gray-600 mb-2">Morelia, Michoacán - Desarrollador Full Stack</p>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                        <li>Diseño y desarrollo de la plataforma de nóminas utilizando PHP y Laravel.</li>
+                        <li>Desarrollo de interfaces interactivas con jQuery, JavaScript, HTML5 y CSS.</li>
+                        <li>Optimización de la experiencia de usuario en dispositivos móviles y de escritorio.</li>
+                        <li>Implementación de autenticación y autorización segura mediante JWT.</li>
+                        <li>Integración de funcionalidades dinámicas con Datatables para visualización de nóminas y
+                            reportes.</li>
+                        <li>Automatización de procesos de cálculo de nóminas y generación de reportes de pagos.</li>
+                    </ul>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">PHP</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Laravel</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">jQuery</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">HTML5</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">CSS3</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">JWT</span>
+                    </div>
+                </div>
+
+                <!-- Monex Power Trust -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                        <h3 class="text-xl font-semibold">Monex Power Trust</h3>
+                        <span class="text-primary font-medium">Julio 2022 - Octubre 2023</span>
+                    </div>
+                    <p class="text-gray-600 mb-2">Morelia, Michoacán - Desarrollador Full Stack</p>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                        <li>Desarrollo de páginas de servicio utilizando Python, Django, jQuery y JavaScript.</li>
+                        <li>Implementación de diseños UX/UI para garantizar funcionalidad fluida y óptima.</li>
+                        <li>Escritura y optimización de consultas SQL.</li>
+                        <li>Personalización de documentos para adaptarse a proyectos específicos.</li>
+                        <li>Gestión de control de versiones y administración de bases de datos SQL.</li>
+                        <li>Uso de contenedores Docker para agilizar procesos de desarrollo y despliegue.</li>
+                    </ul>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Python</span>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Django</span>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">jQuery</span>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">SQL</span>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Docker</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="py-20 px-6 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-4">Formación Académica</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Mi educación y certificaciones profesionales.
+            </p>
+
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="bg-light p-6 rounded-lg shadow-md">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                        <h3 class="text-xl font-semibold">Maestría en Ingeniería Aplicada a la Innovación Tecnológica
+                        </h3>
+                        <span class="text-primary font-medium">Septiembre 2023 - Actual</span>
+                    </div>
+                    <p class="text-gray-600">Universidad Tecnológica de Morelia, Morelia, Michoacán</p>
+                </div>
+
+                <div class="bg-light p-6 rounded-lg shadow-md">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                        <h3 class="text-xl font-semibold">Ingeniería en Desarrollo y Gestión de Software</h3>
+                        <span class="text-primary font-medium">Graduado en Abril 2022</span>
+                    </div>
+                    <p class="text-gray-600">Universidad Tecnológica de Morelia, Morelia, Michoacán</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 bg-primary text-white">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-4">Contacto</h2>
+            <p class="text-center text-blue-100 mb-12 max-w-2xl mx-auto">¿Interesado en trabajar juntos? Contáctame.</p>
+
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Información de contacto</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-4"></i>
+                            <div>
+                                <p class="font-medium">Email</p>
+                                <a href="mailto:martinezoliverosfcojavier@gmail.com"
+                                    class="text-blue-100 hover:text-white">martinezoliverosfcojavier@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-4"></i>
+                            <div>
+                                <p class="font-medium">Teléfono</p>
+                                <a href="tel:4434058953" class="text-blue-100 hover:text-white">443 405 8953</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <h3 class="text-xl font-semibold mb-4">Redes Sociales</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-white bg-opacity-10 hover:bg-opacity-20 p-3 rounded-full transition">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="bg-white bg-opacity-10 hover:bg-opacity-20 p-3 rounded-full transition">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="bg-white bg-opacity-10 hover:bg-opacity-20 p-3 rounded-full transition">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <form class="space-y-4">
+                        <div>
+                            <label for="name" class="block mb-1">Nombre</label>
+                            <input type="text" id="name"
+                                class="w-full bg-blue-800 bg-opacity-30 border border-blue-600 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-blue-200"
+                                placeholder="Tu nombre">
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-1">Email</label>
+                            <input type="email" id="email"
+                                class="w-full bg-blue-800 bg-opacity-30 border border-blue-600 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-blue-200"
+                                placeholder="tu@email.com">
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-1">Mensaje</label>
+                            <textarea id="message" rows="4"
+                                class="w-full bg-blue-800 bg-opacity-30 border border-blue-600 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-blue-200"
+                                placeholder="Tu mensaje"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="bg-white text-primary px-6 py-3 rounded-md hover:bg-blue-50 transition font-medium">Enviar
+                            Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-8 px-6">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2025 Francisco Javier Martínez Oliveros. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle functionality would go here
+        // You would need to add the HTML for the mobile menu and the JS to toggle it
+    </script>
 </body>
+
 </html>
