@@ -75,6 +75,62 @@
             object-fit: cover;
             width: 100%;
         }
+
+        /* Estilos para móviles */
+        @media (max-width: 767px) {
+            section {
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+            }
+            
+            #home {
+                padding-top: 6rem;
+            }
+
+            .skill-card {
+                padding: 1rem;
+            }
+            
+            .skill-card span {
+                font-size: 0.75rem;
+                padding: 0.25rem 0.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            html {
+                font-size: 14px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Estilos para el menú móvil */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .menu-overlay {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+
+        .menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 
@@ -90,40 +146,56 @@
                 <a href="#contact" class="nav-link">Contacto</a>
             </div>
             <a href="#contact"
-                class="bg-primary text-white px-4 py-2 rounded-md hover:bg-blue-600 transition">Contactar</a>
-            <button class="md:hidden text-dark">
+                class="hidden md:block bg-primary text-white px-4 py-2 rounded-md hover:bg-blue-600 transition">Contactar</a>
+            <button id="mobile-menu-button" class="md:hidden text-dark">
                 <i class="fas fa-bars text-xl"></i>
             </button>
         </nav>
     </header>
 
+    <!-- Mobile Menu -->
+    <div id="menu-overlay" class="menu-overlay fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+    <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 w-64 h-full bg-white z-50 shadow-lg p-6">
+        <div class="flex justify-end mb-8">
+            <button id="close-menu-button" class="text-dark">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <div class="flex flex-col space-y-6">
+            <a href="#home" class="nav-link text-lg py-2" onclick="closeMobileMenu()">Inicio</a>
+            <a href="#skills" class="nav-link text-lg py-2" onclick="closeMobileMenu()">Habilidades</a>
+            <a href="#experience" class="nav-link text-lg py-2" onclick="closeMobileMenu()">Experiencia</a>
+            <a href="#contact" class="nav-link text-lg py-2" onclick="closeMobileMenu()">Contacto</a>
+            <a href="#contact" class="bg-primary text-white px-6 py-3 rounded-md hover:bg-blue-600 transition text-center">Contactar</a>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section id="home" class="pt-32 pb-20 px-6">
-        <div class="container mx-auto flex flex-col md:flex-row items-center">
+        <div class="container mx-auto flex flex-col items-center text-center md:text-left md:flex-row">
             <div class="md:w-1/2 mb-10 md:mb-0">
                 <h1 class="text-4xl md:text-5xl font-bold mb-4">Francisco Javier Martínez Oliveros</h1>
                 <h2 class="text-2xl md:text-3xl text-primary mb-6">Full Stack Developer</h2>
                 <p class="text-lg mb-8 text-gray-600">Ingeniero en Desarrollo y Gestión de Software con experiencia en
                     el diseño e implementación de soluciones web completas y escalables.</p>
-                <div class="flex space-x-4">
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                     <a href="#contact"
-                        class="bg-primary text-white px-6 py-3 rounded-md hover:bg-blue-600 transition">Contacto</a>
+                        class="bg-primary text-white px-6 py-3 rounded-md hover:bg-blue-600 transition text-center">Contacto</a>
                     <a href="#skills"
-                        class="border border-primary text-primary px-6 py-3 rounded-md hover:bg-blue-50 transition">Mis
+                        class="border border-primary text-primary px-6 py-3 rounded-md hover:bg-blue-50 transition text-center">Mis
                         habilidades</a>
                 </div>
-                <div class="mt-8">
+                <div class="mt-8 text-center md:text-left">
                     <a href="./assets/docs/CV_FranciscoJavierMartinezOliveros.pdf" download
                         class="inline-flex items-center text-primary hover:text-blue-600 transition">
                         <i class="fas fa-download mr-2"></i> Descargar CV
                     </a>
                 </div>
             </div>
-            <div class="md:w-1/2 flex justify-center">
+            <div class="md:w-1/2 flex justify-center mt-10 md:mt-0">
                 <div
                     class="bg-gradient-to-br from-primary to-blue-400 rounded-full p-2 w-64 h-64 md:w-80 md:h-80 flex items-center justify-center">
                     <div class="bg-white rounded-full w-60 h-60 md:w-76 md:h-76 overflow-hidden border-4 border-white">
-                        <!-- Tu foto de perfil -->
                         <img src="./assets/img/testimonials/my-picture.jpeg" alt="Francisco Javier Martínez Oliveros"
                             class="w-full h-full object-cover">
                     </div>
@@ -584,7 +656,7 @@
     </footer>
 
     <script>
-        // Smooth scrolling for anchor links
+        
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -595,8 +667,31 @@
             });
         });
 
-        // Mobile menu toggle functionality would go here
-        // You would need to add the HTML for the mobile menu and the JS to toggle it
+       
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuOverlay = document.getElementById('menu-overlay');
+
+        function openMobileMenu() {
+            mobileMenu.classList.add('open');
+            menuOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('open');
+            menuOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        mobileMenuButton.addEventListener('click', openMobileMenu);
+        closeMenuButton.addEventListener('click', closeMobileMenu);
+        menuOverlay.addEventListener('click', closeMobileMenu);
+
+        document.querySelectorAll('#mobile-menu .nav-link').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
     </script>
 </body>
 
